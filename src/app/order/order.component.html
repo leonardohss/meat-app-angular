@@ -1,0 +1,107 @@
+<!--INICIO DO CONTEUDO-->
+<section class="content-header">
+</section>
+
+<section class="content">
+  <section class="invoice">
+
+    <form #form="ngForm" novalidate>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
+          </h2>
+        </div>
+      </div>
+
+      <div class="row invoice-info">
+        <div class="col-xs-12">
+          <p class="lead">Endereço de Entrega:</p>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <mt-input-container errorMessage="Campo Obrigatório (Min. 5 caracteres)" label="Endereço">
+            <input type="text" class="form-control" name="address" placeholder="Endereço" minlength="5"
+              autocomplete="off" ngModel required />
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container errorMessage="Campo Obrigatório (somente números)" label="Número">
+            <input type="text" class="form-control" name="number" placeholder="Número" pattern="^[0-9]*$"
+              autocomplete="off" ngModel required />
+          </mt-input-container>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <mt-input-container label="Complemento">
+            <input type="text" class="form-control" name="optional" placeholder="Complemento" ngModel>
+          </mt-input-container>
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="lead">Itens do Pedido:</p>
+        </div>
+
+        <mt-order-items
+          [items]="cartItems()"
+          (increaseQty)="increaseQty($event)"
+          (decreaseQty)="decreaseQty($event)"
+          (remove)="remove($event)">
+        </mt-order-items>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- accepted payments column -->
+        <div class="col-sm-6 col-xs-12">
+          <p class="lead">Formas de Pagamento:</p>
+
+          <div class="form-group">
+            <mt-radio [options]="paymentOptions" name="paymentOption" ngModel></mt-radio>
+          </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6 col-xs-12">
+          <p class="lead">Frete e Total:</p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th style="width:50%">Itens:</th>
+                  <td class="text-right">R$ 20,00</td>
+                </tr>
+                <tr>
+                  <th>Frete:</th>
+                  <td class="text-right">R$ 8,00</td>
+                </tr>
+                <tr>
+                  <th>Total:</th>
+                  <td class="text-right">R$ 28,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+
+    </form>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-success pull-right" [disabled]="!form.valid"><i class="fa fa-credit-card"></i> Concluir
+          Pedido
+        </button>
+      </div>
+    </div>
+
+  </section>
+</section>
+<!-- FIM DO CONTEUDO-->
