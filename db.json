@@ -370,5 +370,32 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "teste",
+      "number": "11",
+      "optionalAddress": "teste",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "burger"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "Rua messina",
+      "number": "11",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "burger"
+        }
+      ],
+      "id": 2
+    }
+  ]
 }
